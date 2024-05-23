@@ -5,6 +5,7 @@ import MyNavbarOne from "./components/navbarOne"
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Body from "./pages/body"
 import './styles/app.css'
+
 const particleOptions = {
   filter: ({ x, y, image }) => {
     // Get pixel
@@ -22,7 +23,7 @@ const particleOptions = {
 }
 
 const motionForce = (x, y) => {
-  return forces.disturbance(x, y, 5)
+  return forces.disturbance(x, y, 35)
 }
 
 
@@ -34,11 +35,9 @@ React.useEffect(()=>{
   const handleScroll = () => {
     // Get the current scroll position
     const scrollPosition = window.scrollY || document.documentElement.scrollTop;
-
     // Set the threshold for triggering the autoscroll to half the screen height
     // const scrollThreshold = window.innerHeight / 8;
     console.log(scrollPosition)
-
     // Set the amount by which you want to auto-scroll down
     const scrollAmount = 200; // Adjust this value as needed
 
@@ -58,12 +57,11 @@ React.useEffect(()=>{
     document.removeEventListener('scroll', handleScroll);
   };
 },[])
+
+
   return (
     <div>
-
-    
     <MyNavbarOne/>
-    
     <ParticleImage
       className="particleCanvas"
       src={"/logo.png"}
@@ -77,9 +75,7 @@ React.useEffect(()=>{
       touchMoveForce={motionForce}
       backgroundColor="#FFFFF"
     />
-    
     <Body/>
-    
     </div>
   )
 }
